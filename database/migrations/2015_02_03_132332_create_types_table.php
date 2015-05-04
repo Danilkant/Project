@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInventoryReference extends Migration {
+class CreateTypesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,12 +12,11 @@ class CreateInventoryReference extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('inventoryReference', function(Blueprint $table)
+		Schema::create('types', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('user_id')->unsigned();
-
-			$table->foreign('user_id')->references('id')->on('users');
+			$table->string('name');
+			$table->timestamps();
 		});
 	}
 
@@ -28,7 +27,7 @@ class CreateInventoryReference extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('inventoryReference');
+		Schema::drop('types');
 	}
 
 }

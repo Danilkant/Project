@@ -13,19 +13,35 @@
 
 Route::get('/', 'MainController@index');
 
+//cards
+
 Route::get('cards', 'MainController@cards');
 
 Route::get('cards/create', 'MainController@createNewCard');
 
-Route::get('cards/{id}', 'MainController@specific');
+Route::get('cards/{id}', 'MainController@specificCard');
 
 Route::get('cards/{id}/update', 'MainController@updateCurrentCard');
 
 Route::get('cards/{id}/delete', 'MainController@deleteCurrentCard');
 
-Route::post('cards/create', 'MainController@store');
+Route::post('cards/{id}/update', 'MainController@updateCard');
 
-Route::post('cards/{id}/update', 'MainController@update');
+Route::post('cards/create', 'MainController@storeCard');
+
+//users
+
+Route::get('users', 'MainController@users');
+
+Route::get('users/{id}', 'MainController@specificUser');
+
+Route::get('users/{id}/update', 'MainController@updateCurrentUser');
+
+Route::get('users/{id}/delete', 'MainController@deleteCurrentUser');
+
+Route::post('users/{id}/update', 'MainController@updateUser');
+
+Route::post('users/{id}', 'MainController@updateInventory');
 
 Route::controllers([
 		'auth' => 'Auth\AuthController',

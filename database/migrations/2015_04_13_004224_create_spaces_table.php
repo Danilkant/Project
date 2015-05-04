@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInventorySpace extends Migration {
+class CreateSpacesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,13 +12,14 @@ class CreateInventorySpace extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('inventorySpace', function(Blueprint $table)
+		Schema::create('spaces', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->integer('inv_id')->unsigned();
-			$talbe->integer('cardRef_id')->default('1');
-			$table->foreign('cardRef_id')->references('id')->on('cards');
-			$table->foreign('inv_id')->references('id')->on('inventoryReference');
+			$table->integer('card_id')->unsigned()->default(1);
+			$table->foreign('card_id')->references('id')->on('cards');
+			$table->foreign('inv_id')->references('id')->on('references')->onDelete('cascade');
+			$table->timestamps();
 		});
 	}
 
@@ -29,7 +30,7 @@ class CreateInventorySpace extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('inventorySpace');
+		Schema::drop('spaces');
 	}
 
 }

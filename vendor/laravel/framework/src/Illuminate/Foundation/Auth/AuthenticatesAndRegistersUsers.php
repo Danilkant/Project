@@ -1,5 +1,7 @@
 <?php namespace Illuminate\Foundation\Auth;
 
+use App\User;
+
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
@@ -48,6 +50,10 @@ trait AuthenticatesAndRegistersUsers {
 		}
 
 		$this->auth->login($this->registrar->create($request->all()));
+
+		$id = User::select('id')->where('email', '=', $request->email)->get();
+		
+		$this->registrar->createInventory($id);
 
 		return redirect($this->redirectPath());
 	}
@@ -122,7 +128,7 @@ trait AuthenticatesAndRegistersUsers {
 			return $this->redirectPath;
 		}
 
-		return property_exists($this, 'redirectTo') ? $this->redirectTo : '/home';
+		return property_exists($this, 'redirectTo') ? $this->redirectTo : '/';
 	}
 
 	/**

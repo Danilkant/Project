@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class CreateCard extends Request {
+class UpdateUser extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -23,9 +23,8 @@ class CreateCard extends Request {
 	{
 		$requests = Request::all();
 		return [
-			'title' => 'required|min:3|max:20|unique:cards,title,'.$requests['id'],
-			'description' => 'required|min:10|max:150',
-			'cost' => 'required|integer|max:10'
+			'email' => 'required|email|unique:users,email,'.$requests['id'],
+			'name' => 'required|min:3'
 		];
 	}
 

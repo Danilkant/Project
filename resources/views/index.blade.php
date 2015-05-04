@@ -11,7 +11,9 @@
 			<a href="#panel1a"><strong>Manipulation</strong></a>
 				<div id="panel1a" class="content active">
 					<a href="{{ action('MainController@cards') }}">View all Cards</p>
-					<a href="">View all Users</p>
+					<a href="{{ action('MainController@users') }}">View all Users</p>
+					<a href="">View all card Types</p>
+					<a href="">View all Factions</p>
 			    </div>
 		</li>
 		<li class="accordion-navigation">

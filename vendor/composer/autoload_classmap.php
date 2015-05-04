@@ -7,9 +7,12 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'CreateCardsTable' => $baseDir . '/database/migrations/2015_04_12_143821_create_cards_table.php',
-    'CreateInventoryReference' => $baseDir . '/database/migrations/2015_04_13_004154_create_inventory_reference.php',
-    'CreateInventorySpace' => $baseDir . '/database/migrations/2015_04_13_004224_create_inventory_space.php',
+    'CreateFactionsTable' => $baseDir . '/database/migrations/2015_02_03_132025_create_factions_table.php',
+    'CreateInventoryReferences' => $baseDir . '/database/migrations/2015_04_13_004154_create_inventory_references.php',
+    'CreateInventoryReferencesTable' => $baseDir . '/database/migrations/2015_05_03_190543_create_inventory_references_table.php',
+    'CreateInventorySpaces' => $baseDir . '/database/migrations/2015_04_13_004224_create_inventory_spaces.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2015_04_13_003222_create_password_resets_table.php',
+    'CreateTypesTable' => $baseDir . '/database/migrations/2015_02_03_132332_create_types_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2015_04_13_003119_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/File/Iterator.php',

@@ -15,9 +15,14 @@ class CreateCardsTable extends Migration {
 		Schema::create('cards', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->integer('type_id')->unsigned();
+			$table->integer('faction_id')->unsigned();
+			$table->integer('cost')->unsigned();
 			$table->string('title');
 			$table->text('description');
 			$table->timestamps();
+			$table->foreign('type_id')->references('id')->on('types')->onDelete('cascade');
+			$table->foreign('faction_id')->references('id')->on('factions')->onDelete('cascade');
 		});
 	}
 

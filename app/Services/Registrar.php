@@ -1,6 +1,11 @@
 <?php namespace App\Services;
 
 use App\User;
+use App\Type;
+use App\Faction;
+use App\Card;
+use App\Reference;
+use App\Space;
 use Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
 
@@ -29,11 +34,37 @@ class Registrar implements RegistrarContract {
 	 */
 	public function create(array $data)
 	{
+
 		return User::create([
-			'name' => $data['name'],
-			'email' => $data['email'],
-			'password' => bcrypt($data['password']),
+				'name' => $data['name'],
+				'email' => $data['email'],
+				'password' => bcrypt($data['password']),
 		]);
+	}
+
+	public function createInventory($id)
+	{
+		$temp = 0;
+
+		foreach ($id as $item) {
+			$temp = $item->id;
+		}
+
+		if($temp < 2){
+			Type::create(['name'=>'temp']);
+
+			Faction::create(['name'=>'temp']);
+			
+			Card::create(['type_id'=>1,'faction_id'=>1,'cost'=>0,'title'=>'Temp','description'=>'Replace me!']);
+		}
+
+		Reference::create(['user_id' => $temp]);
+
+		for ($i=0; $i < 32; $i++) { 
+			Space::create(['inv_id' => $temp, 'card_id' => 1]);
+		}
+
+		return true;
 	}
 
 }

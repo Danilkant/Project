@@ -2,10 +2,10 @@
 
 @section('content')
 	<ul class="small-block-grid-3">
-		@foreach($storage as $card)
+		@foreach($storage as $user)
 			<li>
-				<a href="{{ action('MainController@specificCard', [$card->id]) }}">{{ $card->title }}</a>
-				<p>{{ $card->description }}</p>
+				<a href="{{ action('MainController@specificUser', [$user->id]) }}">{{ $user->email }}</a>
+				<p>{{ $user->name }}</p>
 			</li>
 		@endforeach
 	</ul>
@@ -17,12 +17,6 @@
 			<a href="#panel1a"><strong>Manipulation</strong></a>
 				<div id="panel1a" class="content active">
 					<a href="{{ action('MainController@index') }}">Back to main Page</p>
-			    </div>
-		</li>
-		<li class="accordion-navigation">
-			<a href="#panel2a"><strong>Card Manipulation</strong></a>
-				<div id="panel2a" class="content active">
-					<a href="{{ action('MainController@createNewCard') }}">Create new Card</p>
 			    </div>
 		</li>
 
